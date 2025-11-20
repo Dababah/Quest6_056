@@ -1,9 +1,4 @@
 
+            composable(route = Navigasi.Formulirku.name) {
+                val konteks = localcontext.current
 
-@Composable
-fun Datasiswa(
-    navController : NavHostController = rememberNavController(),
-    modifier: Modifier
-    viewModel: SiswaViewModel = viewModel(),
-    navController: NavHostController
-)
