@@ -11,28 +11,21 @@ import androidx.navigation.compose.composable
 
 
 
-enum class Navigasi {
-    Formulirku,
 
-    Detail
-}
-
-@Composable
-fun DataApp(
-    navController : NavHostController = rememberNavController(),
-    modifier: Modifier
-){
-    Scaffold { isiRuang ->
-        NavHost(
-            navController = navController,
-            startDestination = Navigasi.Formulirku.name,
-            modifier = Modifier.padding(paddingValues = isiRuang)
-        ) {
-            composable(route = Navigasi.Formulirku.name) {
-                FormIsian(
-                    // pilihanJK = JenisK.map { id -> resources.getString(id) }
-                    OnSubmitBtnClick = {
-                        navController.navigate(route = Navigasi.Detail.name)
+            composable(route = Navigasi.Detail.name){
+                TampilData(
+                    onBackBtnClick = {
+                        cancelAndBackToFormulirku(navController)
                     }
                 )
             }
+        }
+    }
+}
+
+private fun  cancelAndBackToFormulirku(
+    navController: NavHostController
+){
+    navController.popBackStack(Navigasi.Formulirku,
+        inclusive = false)
+}
