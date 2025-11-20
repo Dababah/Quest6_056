@@ -36,20 +36,3 @@ fun DataApp(
                     }
                 )
             }
-            composable(route = Navigasi.Detail.name){
-                TampilData(
-                    onBackBtnClick = {
-                        cancelAndBackToFormulirku(navController)
-                    }
-                )
-            }
-        }
-    }
-}
-
-private fun  cancelAndBackToFormulirku(
-    navController: NavHostController
-){
-    navController.popBackStack(Navigasi.Formulirku,
-        inclusive = false)
-}
