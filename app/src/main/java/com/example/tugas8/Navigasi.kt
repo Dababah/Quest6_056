@@ -1,4 +1,13 @@
 
-            composable(route = Navigasi.Formulirku.name) {
-                val konteks = localcontext.current
+            composable(route = Navigasi.Detail.name){
+                TampilData(
+                    onBackBtnClick = {
+                        statusUISiswa =uiState.value,
+                        onBackButtonClicked=cancelAndBackToFormulirku(navController)
+                    }
+                )
+            }
+        }
+    }
+}
 
