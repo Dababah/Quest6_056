@@ -8,10 +8,36 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.tugas8.viewmodel.SiswaViewModel
 
 
+enum class Navigasi {
+    Formulirku,
 
+    Detail
+}
 
+@Composable
+fun DataApp(
+    navController : NavHostController = rememberNavController(),
+    modifier: Modifier
+    viewModel: SiswaViewModel = viewModel(),
+    navController: NavHostController
+){
+    Scaffold { isiRuang ->
+        NavHost(
+            navController = navController,
+            startDestination = Navigasi.Formulirku.name,
+            modifier = Modifier.padding(paddingValues = isiRuang)
+        ) {
+            composable(route = Navigasi.Formulirku.name) {
+                FormIsian(
+                    // pilihanJK = JenisK.map { id -> resources.getString(id) }
+                    OnSubmitBtnClick = {
+                        navController.navigate(route = Navigasi.Detail.name)
+                    }
+                )
+            }
             composable(route = Navigasi.Detail.name){
                 TampilData(
                     onBackBtnClick = {
